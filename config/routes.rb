@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      get 'sample', to: 'search#sample'
-      get 'search_within', to: 'search#search_within'
+      get 'search/sample', to: 'search#sample'
+      get 'search/within', to: 'search#within'
+      get 'search/by_name', to: 'search#by_name'
     end
   end
 end
