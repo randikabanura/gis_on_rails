@@ -14,7 +14,7 @@ school_geo_json.each do |school|
   address += school.property(:STATE).to_s if school.property(:STATE).present?
 
   school_name = school.property(:NAME) if school.property(:NAME).present?
-  unit_id =  school.property(:UNITID) if school.property(:UNITID).present?
+  unit_id = school.property(:UNITID) if school.property(:UNITID).present?
 
   if school_name
     SecondarySchool.create!(address: address, lonlat: school.geometry, name: school_name, unit_id: unit_id)
