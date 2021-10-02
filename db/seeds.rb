@@ -9,9 +9,9 @@ puts 'Old school date delete completed'
 
 school_geo_json.each do |school|
   address = ''
-  address += "#{school.property(:STREET)}\n" if school.property(:STREET).present?
-  address += "#{school.property(:CITY)}\n" if school.property(:CITY).present?
-  address += "#{school.property(:STATE)}\n" if school.property(:STATE).present?
+  address += "#{school.property(:STREET)}, " if school.property(:STREET).present?
+  address += "#{school.property(:CITY)}, " if school.property(:CITY).present?
+  address += school.property(:STATE).to_s if school.property(:STATE).present?
 
   school_name = school.property(:NAME) if school.property(:NAME).present?
   unit_id =  school.property(:UNITID) if school.property(:UNITID).present?
