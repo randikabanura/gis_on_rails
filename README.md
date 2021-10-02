@@ -21,4 +21,8 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+## Developer
+Name: [Banura Randika Perera](https://github.com/randikabanura) <br/>
+Linkedin: [randika-banura](https://www.linkedin.com/in/randika-banura/) <br/>
+Email: [randika.banura@gamil.com](mailto:randika.banura@gamil.com) <br/>
+Bsc (Hons) Information Technology specialized in Software Engineering (SLIIT)
