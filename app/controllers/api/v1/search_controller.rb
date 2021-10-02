@@ -32,10 +32,30 @@ class Api::V1::SearchController < ApiController
     end
   end
 
+  def by_unit_id
+    begin
+      unit_id = by_unit_id_params[:unit_id]
+
+      if unit_id.present?
+        @secondary_school = SecondarySchool.find_by(unit_id: unit_id)
+        @status = 0
+        render template: 'api/v1/search/by_unit_id', status: :ok
+      else
+        @secondary_school = nil
+        @status = -1
+        render template: 'api/v1/search/by_unit_id', status: :bad_request
+      end
+    rescue StandardError
+      @secondary_school = nil
+      @status = -1
+      render template: 'api/v1/search/by_unit_id', status: :internal_server_error
+    end
+  end
+
   def by_name
     begin
-      query = params[:query]
-      limit = params[:limit] || SecondarySchool.count
+      query = by_name_params[:query]
+      limit = by_name_params[:limit] || SecondarySchool.count
 
       if query.present?
         @secondary_schools = SecondarySchool.where('lower(name) LIKE ?', "%#{query.downcase}%").limit(limit)
@@ -62,5 +82,9 @@ class Api::V1::SearchController < ApiController
 
   def by_name_params
     params.permit(:query, :limit)
+  end
+
+  def by_unit_id_params
+    params.permit(:unit_id)
   end
 end
