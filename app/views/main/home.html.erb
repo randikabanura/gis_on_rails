@@ -24,6 +24,13 @@
         {
             description: "<b><%= secondary_school.name.html_safe %></b> <br> <%= secondary_school.address.html_safe %>",
         },
+        {
+            externalGraphic: 'marker.png',
+            graphicHeight: 25,
+            graphicWidth: 21,
+            graphicXOffset:-12,
+            graphicYOffset:-25
+        }
     );
     vectorLayer.addFeatures(feature);
     <% end %>
