@@ -118,19 +118,3 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 end
-
-module ActiveRecord
-  module ConnectionHandling
-    class MergeAndResolveDefaultUrlConfig
-      private
-      def config
-        @raw_config.dup.tap do |cfg|
-          if url = ENV['DATABASE_URL']
-            cfg[@env] ||= {}
-            cfg[@env]["url"] ||= url.try(:gsub, "postgres", "postgis")
-          end
-        end
-      end
-    end
-  end
-end
