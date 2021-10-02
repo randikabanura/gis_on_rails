@@ -26,6 +26,8 @@ default: &default
 development:
   <<: *default
   database: gis_on_rails_development
+  postgis_extension: postgis
+  schema_search_path: public,postgis
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -86,3 +88,5 @@ production:
   database: gis_on_rails_production
   username: gis_on_rails
   password: <%= ENV['GIS_ON_RAILS_DATABASE_PASSWORD'] %>
+  postgis_extension: postgis
+  schema_search_path: public,postgis
