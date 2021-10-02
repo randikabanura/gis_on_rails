@@ -88,3 +88,4 @@ production:
   database: gis_on_rails_production
   username: gis_on_rails
   password: <%= ENV['GIS_ON_RAILS_DATABASE_PASSWORD'] %>
+  url: <%= ENV.fetch('DATABASE_URL', '').sub(/^postgres/, "postgis") %>
